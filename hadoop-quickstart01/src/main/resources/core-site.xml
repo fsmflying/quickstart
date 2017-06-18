@@ -2,6 +2,6 @@
 <configuration>
 	<property>
 		<name>fs.defaultFS</name>
-		<value>hdfs://master.hadoop:9000</value>
+		<value>hdfs://192.168.1.131:9000</value>
 	</property>
 </configuration>

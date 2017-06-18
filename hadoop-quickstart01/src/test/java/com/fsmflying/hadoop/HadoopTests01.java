@@ -40,14 +40,17 @@ public class HadoopTests01 {
 		System.out.println("projectDir=" + projectDir);
 
 		Configuration conf = new Configuration();
+        //
+//		 the way 1 ：　使用classpath下的core-site.xml文件来配置hdfs的连接信息
+		 System.setProperty("HADOOP_USER_NAME", "hadoop");
+		 fileSystem = FileSystem.get(conf);
 
-		// the way 1 to create
-		// System.setProperty("HADOOP_USER_NAME", "hadoop");
-		// conf.set("fs.defaultFS", "hdfs://master.hadoop:9000");
-		// fileSystem = FileSystem.get(conf);
+		 //the way 2:设置配置属性来定义连接信息
+//		 conf.set("fs.defaultFS", "hdfs://master.hadoop:9000");
+//		 fileSystem = FileSystem.get(conf);
 
-		// the way 2 to create
-		fileSystem = FileSystem.get(new URI("hdfs://master.hadoop:9000"), conf, "hadoop");
+		// the way 3 :直接配置
+//		fileSystem = FileSystem.get(new URI("hdfs://192.168.1.131:9000"), conf, "hadoop");
 
 		// System.setProperty("HADOOP_USER_NAME", "hadoop");
 	}
@@ -101,7 +104,7 @@ public class HadoopTests01 {
 	@Test
 	public void test01_copyFileToLocal_02() throws IllegalArgumentException, IOException {
 		boolean delSrc = true;
-		String src = "/pom.xml";
+		String src = "/test/pom.xml";
 		String dst = baseDir + "/downloads/"
 				+ new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime()) 
 				+ "/pom.xml";
