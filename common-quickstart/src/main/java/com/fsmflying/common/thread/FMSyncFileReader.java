@@ -1,6 +1,8 @@
 package com.fsmflying.common.thread;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +21,8 @@ public class FMSyncFileReader implements FMSyncReader {
 	private String suffix = "tmp";
 	private int nextFileIndex = 0;
 	private String dirname = ".\\";
+	private int numOfRowsPerRead = 100000;
+	private static final int NUM_OF_ROWS_PER_READ = 100000;
 
 	private BufferedReader reader;
 
@@ -27,24 +31,69 @@ public class FMSyncFileReader implements FMSyncReader {
 	}
 
 	public FMSyncFileReader(BufferedReader reader, String prefix, String suffix) {
-		this.reader = reader;
+		this(reader);
 		this.prefix = prefix;
 		this.suffix = suffix;
+
 	}
 
-	public FMSyncFileReader(BufferedReader reader, String originalFileName) {
+	public FMSyncFileReader(BufferedReader reader, String prefix, String suffix, int numOfRowsPerRead) {
+		this(reader);
+		this.prefix = prefix;
+		this.suffix = suffix;
+		this.numOfRowsPerRead = numOfRowsPerRead;
+	}
+
+	public FMSyncFileReader(String fullFileName) throws FileNotFoundException {
+		this(fullFileName, NUM_OF_ROWS_PER_READ);
+	}
+
+	public FMSyncFileReader(String fullFileName, String prefix, String suffix) throws FileNotFoundException {
+		this(fullFileName, prefix, suffix, NUM_OF_ROWS_PER_READ);
+	}
+
+	public FMSyncFileReader(String fullFileName, String prefix, String suffix, int numOfRowsPerRead)
+			throws FileNotFoundException {
+		this(new BufferedReader(new FileReader(fullFileName)));
+		this.prefix = prefix;
+		this.suffix = suffix;
+		this.numOfRowsPerRead = numOfRowsPerRead;
+	}
+
+	public FMSyncFileReader(String fullFileName, int numOfRowsPerRead) throws FileNotFoundException {
+		this(new BufferedReader(new FileReader(fullFileName)));
+		this.numOfRowsPerRead = numOfRowsPerRead;
+		if (fullFileName != null && !fullFileName.equals("")) {
+			if (fullFileName.lastIndexOf("/") >= 0 || fullFileName.lastIndexOf("\\") >= 0) {
+				fullFileName = fullFileName.replace('/', '\\');
+				dirname = fullFileName.substring(0, fullFileName.lastIndexOf("\\") + 1);
+				fullFileName = fullFileName.substring(fullFileName.lastIndexOf("\\") + 1);
+			}
+			int lastIndex = fullFileName.lastIndexOf(".");
+			if (lastIndex >= 0) {
+				this.prefix = fullFileName.substring(0, lastIndex);
+				this.suffix = fullFileName.substring(lastIndex + 1);
+			}
+		}
+	}
+
+	public BufferedReader getReader() {
+		return reader;
+	}
+
+	public FMSyncFileReader(BufferedReader reader, String fullFileName) {
 		this.reader = reader;
-		if (originalFileName != null && !originalFileName.equals("")) {
-			if (originalFileName.lastIndexOf("/") >= 0 || originalFileName.lastIndexOf("\\") >= 0) {
-				originalFileName = originalFileName.replace('/', '\\');
-				dirname = originalFileName.substring(0, originalFileName.lastIndexOf("\\") + 1);
-				originalFileName = originalFileName.substring(originalFileName.lastIndexOf("\\") + 1);
+		if (fullFileName != null && !fullFileName.equals("")) {
+			if (fullFileName.lastIndexOf("/") >= 0 || fullFileName.lastIndexOf("\\") >= 0) {
+				fullFileName = fullFileName.replace('/', '\\');
+				dirname = fullFileName.substring(0, fullFileName.lastIndexOf("\\") + 1);
+				fullFileName = fullFileName.substring(fullFileName.lastIndexOf("\\") + 1);
 				// System.out.println("dirName:" + dirname);
 			}
-			int lastIndex = originalFileName.lastIndexOf(".");
+			int lastIndex = fullFileName.lastIndexOf(".");
 			if (lastIndex >= 0) {
-				this.prefix = originalFileName.substring(0, lastIndex);
-				this.suffix = originalFileName.substring(lastIndex + 1);
+				this.prefix = fullFileName.substring(0, lastIndex);
+				this.suffix = fullFileName.substring(lastIndex + 1);
 				// System.out.println("originalFileName:" +
 				// originalFileName);
 				// System.out.println("prefix:" + this.prefix);
@@ -75,7 +124,9 @@ public class FMSyncFileReader implements FMSyncReader {
 		return list;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.fsmflying.common.thread.FMSyncReader#readWithFileName(int)
 	 */
 	@Override
@@ -84,19 +135,35 @@ public class FMSyncFileReader implements FMSyncReader {
 		int i = 0;
 		List<String> list = new ArrayList<String>();
 		String line = reader.readLine();
-		while (i < rowCount && (!"".equals(line)) && (null != line)) {
+		while (i < rowCount && (!"".equals(line)) && (!"\n".equals(line)) && (null != line)) {
 			list.add(line);
 			i++;
 			line = reader.readLine();
 		}
-//		System.out.println("nextFileIndex:" + nextFileIndex);
+		// System.out.println("nextFileIndex:" + nextFileIndex);
 		map.put("data", list);
 
 		List<String> name = new ArrayList<String>();
 		name.add(this.getNextFileName());
 		map.put("name", name);
-		
+
 		return map;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.fsmflying.common.thread.FMSyncReader#readWithFileName(int)
+	 */
+	@Override
+	public synchronized Map<String, List<String>> readWithFileName() throws IOException {
+		return readWithFileName(this.numOfRowsPerRead);
+	}
+
+	@Override
+	public void close() throws IOException {
+		if (this.reader != null)
+			this.reader.close();
 	}
 
 }
