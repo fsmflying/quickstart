@@ -1,0 +1,21 @@
+[2017-06-28 20:01:40,001][ERROR]: An unexpected connection driver error occured
+java.net.SocketException: socket closed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:152)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:254)
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:164)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:578)
+	at java.lang.Thread.run(Thread.java:745)
+[2017-06-28 20:33:49,336][INFO]: ======[2017-06-28 20:33:49]======================================================================
+[2017-06-28 20:36:15,184][INFO]: ======[2017-06-28 20:36:15]======================================================================
+[2017-06-28 20:36:15,193][INFO]: [test_04_bindQueueToTestExchange]
+[2017-06-28 20:37:05,886][INFO]: ======[2017-06-28 20:37:05]======================================================================
+[2017-06-28 20:37:05,924][INFO]: [test_03_produceToTestExchange]Producer Send +'2017-06-28 20:37:05Hello RabbitMQ'
+[2017-06-28 20:41:46,606][INFO]: ======[2017-06-28 20:41:46]======================================================================
+[2017-06-28 20:41:46,643][INFO]: [test_04_bindQueueToLogsExchange]
+[2017-06-28 20:43:36,469][INFO]: ======[2017-06-28 20:43:36]======================================================================
+[2017-06-28 20:43:36,480][INFO]: [test_03_produceToTestExchange]Producer Send +'2017-06-28 20:43:36Hello RabbitMQ'

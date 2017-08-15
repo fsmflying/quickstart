@@ -11,8 +11,9 @@ com.fsmflying.common.thread.FMFileSplitHandler实现Runnable接口，用于从�
 com.fsmflying.common.nio.Startup:用于测试nio功能
 
 
-
-
+com.fsmflying.common.proxy：用于演示代理实现
+com.fsmflying.common.proxy.jdk：用于演示jdk代理
+com.fsmflying.common.proxy.cglib:用于演示cglib代理
 
 
 

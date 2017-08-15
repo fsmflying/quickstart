@@ -51,7 +51,7 @@ public class RedisTest01 {
 	public void test11_list_lpush() {
 		System.out.println("--list--lpush---------------------------------------------");
 		jedis.lpush("list_users", "fangming", "yanxia", "wangxiaojuan", "zhangyang");
-		
+
 	}
 
 	@Test
@@ -110,6 +110,16 @@ public class RedisTest01 {
 		for (String key : map.keySet()) {
 			System.out.println("{" + key + ":" + map.get(key) + "}");
 		}
+		// jedis.keys("*".getBytes());
+	}
 
+	@Test
+	public void test32_keys() {
+		System.out.println("---test32_keys----------------------------------------------");
+		Set<String> keys = jedis.keys("*");
+		for (String k : keys){
+			System.out.println(k);
+//			jedis.get(k)
+		}
 	}
 }

@@ -1,9 +1,13 @@
 package com.fsmflying.common.thread;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,8 +64,35 @@ public class FMSyncFileReader implements FMSyncReader {
 		this.numOfRowsPerRead = numOfRowsPerRead;
 	}
 
+	public FMSyncFileReader(InputStream input, String prefix, String suffix, int numOfRowsPerRead)
+			throws FileNotFoundException {
+		this(new BufferedReader(new InputStreamReader(input)));
+		this.prefix = prefix;
+		this.suffix = suffix;
+		this.numOfRowsPerRead = numOfRowsPerRead;
+	}
+
 	public FMSyncFileReader(String fullFileName, int numOfRowsPerRead) throws FileNotFoundException {
 		this(new BufferedReader(new FileReader(fullFileName)));
+//		this(new BufferedReader(new InputStreamReader(new FileInputStream(fullFileName),Charset.forName("UTF-8"))));
+		this.numOfRowsPerRead = numOfRowsPerRead;
+		if (fullFileName != null && !fullFileName.equals("")) {
+			if (fullFileName.lastIndexOf("/") >= 0 || fullFileName.lastIndexOf("\\") >= 0) {
+				fullFileName = fullFileName.replace('/', '\\');
+				dirname = fullFileName.substring(0, fullFileName.lastIndexOf("\\") + 1);
+				fullFileName = fullFileName.substring(fullFileName.lastIndexOf("\\") + 1);
+			}
+			int lastIndex = fullFileName.lastIndexOf(".");
+			if (lastIndex >= 0) {
+				this.prefix = fullFileName.substring(0, lastIndex);
+				this.suffix = fullFileName.substring(lastIndex + 1);
+			}
+		}
+	}
+
+	public FMSyncFileReader(String fullFileName, String charset,int numOfRowsPerRead) throws FileNotFoundException {
+//		this(new BufferedReader(new FileReader(fullFileName)));
+		this(new BufferedReader(new InputStreamReader(new FileInputStream(fullFileName),Charset.forName(charset))));
 		this.numOfRowsPerRead = numOfRowsPerRead;
 		if (fullFileName != null && !fullFileName.equals("")) {
 			if (fullFileName.lastIndexOf("/") >= 0 || fullFileName.lastIndexOf("\\") >= 0) {

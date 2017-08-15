@@ -21,6 +21,8 @@ public class TimeServer {
 
 	public static void main(String[] args) throws Exception {
 		// Configure SSL.
+		System.out.println("SSL:" + SSL);
+		System.out.println("PORT:" + PORT);
 		final SslContext sslCtx;
 		if (SSL) {
 			SelfSignedCertificate ssc = new SelfSignedCertificate();
@@ -30,13 +32,14 @@ public class TimeServer {
 		}
 
 		// Configure the server.
-		EventLoopGroup bossGroup = new NioEventLoopGroup(1);//一个处理I/O操作的多线程事件循环
+		EventLoopGroup bossGroup = new NioEventLoopGroup(1);// 一个处理I/O操作的多线程事件循环
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
 			ServerBootstrap b = new ServerBootstrap();
 			b.group(bossGroup, workerGroup)//
-					.channel(NioServerSocketChannel.class)//用于指定ServerChannel,该类被用于创建Channel实例
-					.option(ChannelOption.SO_BACKLOG, 100)//允许指定一个ChannelOption，该通道用于创建通道实例。 使用null值来删除先前设置的ChannelOption。
+					.channel(NioServerSocketChannel.class)// 用于指定ServerChannel,该类被用于创建Channel实例
+					.option(ChannelOption.SO_BACKLOG, 100)// 允许指定一个ChannelOption，该通道用于创建通道实例。
+															// 使用null值来删除先前设置的ChannelOption。
 					.handler(new LoggingHandler(LogLevel.INFO))//
 					.childHandler(new ChannelInitializer<SocketChannel>() {
 						@Override
