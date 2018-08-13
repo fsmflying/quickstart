@@ -9,7 +9,11 @@
 
 	<name>kafka-quickstart01</name>
 	<url>http://maven.apache.org</url>
-
+	<parent>
+		<groupId>com.fsmflying</groupId>
+		<artifactId>quickstart</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

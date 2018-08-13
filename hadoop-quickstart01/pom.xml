@@ -6,10 +6,13 @@
 	<artifactId>hadoop-quickstart01</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>hadoop-quickstart01</name>
 	<url>http://maven.apache.org</url>
-
+	<parent>
+		<groupId>com.fsmflying</groupId>
+		<artifactId>quickstart</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hadoop.version>2.7.3</hadoop.version>

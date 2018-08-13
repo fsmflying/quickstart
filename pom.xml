@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fsmflying</groupId>
+    <artifactId>quickstart</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>quickstart</name>
+    <url>http://maven.apache.org</url>
+    <modules>
+        <module>bootstrap-quickstart01</module>
+        <module>common-quickstart</module>
+        <module>database-quickstart01</module>
+        <module>guava-quickstart01</module>
+        <module>hadoop-quickstart01</module>
+        <module>hbase-quickstart01</module>
+        <module>jersey-quickstart01</module>
+        <module>jersey-quickstart02</module>
+        <module>kafka-quickstart01</module>
+        <module>mongodb-quickstart01</module>
+        <!--<module>monitor-quickstart01</module>-->
+        <module>netty-quickstart01</module>
+        <module>rabbitmq-quickstart01</module>
+        <module>redis-quickstart01</module>
+        <module>spark-quickstart01</module>
+        <module>spring-4.3.x-quickstart</module>
+        <module>storm-quickstart01</module>
+        <!--<module>web-quickstart01</module>-->
+        <module>zookeeper-quickstart01</module>
+    </modules>
+</project>
