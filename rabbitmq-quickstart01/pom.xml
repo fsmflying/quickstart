@@ -36,9 +36,7 @@
 		<dependency>
 			<groupId>com.fsmflying</groupId>
 			<artifactId>common-quickstart</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>D:\dev\git\ReposBase\quickstart\netty-quickstart01\../common-quickstart/target/common-quickstart-0.0.1-SNAPSHOT.jar</systemPath>
+			<version>${quickstart.version}</version>
 		</dependency>
 		<!-- log -->
 		<dependency>

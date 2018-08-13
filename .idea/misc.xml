@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/bootstrap-quickstart01" />
     <file type="web" url="file://$PROJECT_DIR$/jersey-quickstart02" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-4.3.x-quickstart" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

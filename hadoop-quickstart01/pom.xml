@@ -15,9 +15,9 @@
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<hadoop.version>2.7.3</hadoop.version>
-		<maven.compile.source>1.7</maven.compile.source>
-		<maven.compile.target>1.7</maven.compile.target>
+		<hadoop.version>2.7.7</hadoop.version>
+		<maven.compile.source>1.8</maven.compile.source>
+		<maven.compile.target>1.8</maven.compile.target>
 		<!-- <app.main.class>com.fsmflying.hadoop.Startup</app.main.class> -->
 		<app.main.class>com.fsmflying.hadoop.RPCClient</app.main.class>
 	</properties>
@@ -30,7 +30,7 @@
 			<version>${hadoop.version}</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
+		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId>
 			<version>3.8.1</version> <scope>test</scope> </dependency> -->
 	</dependencies>
 	<build>

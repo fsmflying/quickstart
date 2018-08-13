@@ -4,13 +4,20 @@
 
     <groupId>com.fsmflying</groupId>
     <artifactId>quickstart</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${quickstart.version}</version>
     <packaging>pom</packaging>
     <name>quickstart</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <quickstart.version>0.0.1-SNAPSHOT</quickstart.version>
+        <java.compile.version>1.8</java.compile.version>
+        <java.source.version>1.8</java.source.version>
+        <hadoop.version>2.7.7</hadoop.version>
+    </properties>
     <modules>
         <module>bootstrap-quickstart01</module>
-        <module>common-quickstart</module>
+        <!--<module>common-quickstart</module>-->
         <module>database-quickstart01</module>
         <module>guava-quickstart01</module>
         <module>hadoop-quickstart01</module>
@@ -19,14 +26,18 @@
         <module>jersey-quickstart02</module>
         <module>kafka-quickstart01</module>
         <module>mongodb-quickstart01</module>
-        <!--<module>monitor-quickstart01</module>-->
+
         <module>netty-quickstart01</module>
         <module>rabbitmq-quickstart01</module>
         <module>redis-quickstart01</module>
         <module>spark-quickstart01</module>
         <module>spring-4.3.x-quickstart</module>
         <module>storm-quickstart01</module>
-        <!--<module>web-quickstart01</module>-->
         <module>zookeeper-quickstart01</module>
+
+
+        <!--<module>monitor-quickstart01</module>-->
+        <!--<module>web-quickstart01</module>-->
     </modules>
+
 </project>
