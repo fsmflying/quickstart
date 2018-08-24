@@ -84,7 +84,6 @@ public class SelectorServer {
     }
 
 
-
     /**
      * 发送测试数据包，若失败则认为该socket失效
      *
@@ -124,7 +123,7 @@ public class SelectorServer {
         }
         String s = (new String(bytes)).trim();
         if (!s.isEmpty()) {
-            if ("exit".equals(s)){
+            if ("exit".equals(s)) {
                 ssc.close();
                 closed = true;
             }

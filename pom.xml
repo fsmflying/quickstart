@@ -14,6 +14,8 @@
         <java.compile.version>1.8</java.compile.version>
         <java.source.version>1.8</java.source.version>
         <hadoop.version>2.7.7</hadoop.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <modules>
         <module>bootstrap-quickstart01</module>
@@ -34,6 +36,8 @@
         <module>spring-4.3.x-quickstart</module>
         <module>storm-quickstart01</module>
         <module>zookeeper-quickstart01</module>
+        <module>lucene-quickstart01</module>
+        <module>lucene-quickstart01</module>
 
 
         <!--<module>monitor-quickstart01</module>-->

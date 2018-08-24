@@ -1,5 +1,5 @@
 package com.fsmflying.common.proxy.cglib;
 
 public interface SayB {
-	public void say(String message);
+    public void say(String message);
 }

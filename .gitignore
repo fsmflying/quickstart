@@ -48,6 +48,12 @@ kafka-quickstart01/*.iml
 kafka-quickstart01/.settings/
 kafka-quickstart01/target/
 
+lucene-quickstart01/.classpath
+lucene-quickstart01/.project
+lucene-quickstart01/*.iml
+lucene-quickstart01/.settings/
+lucene-quickstart01/target/
+
 mongodb-quickstart01/.classpath
 mongodb-quickstart01/.project
 mongodb-quickstart01/*.iml
