@@ -35,6 +35,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 * traffic between the echo client and server by sending the first message to
 * the server.
 */
+@SuppressWarnings("all")
 public final class EchoClient {
 
    static final boolean SSL = System.getProperty("ssl") != null;

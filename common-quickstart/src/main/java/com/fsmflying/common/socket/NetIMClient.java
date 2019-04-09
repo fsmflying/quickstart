@@ -9,7 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.PrintWriter;
-
+@SuppressWarnings("all")
 public class NetIMClient {
     @SuppressWarnings("unused")
     public static void main(String args[]) {
@@ -25,7 +25,6 @@ public class NetIMClient {
             startupClient();
     }
 
-    //	@SuppressWarnings("unused")
     private static void startupClient() {
         // TODO Auto-generated method stub
         System.out.println("启动客户端!");

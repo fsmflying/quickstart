@@ -13,7 +13,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("Server接受的客户端的信息 :" + body.toString());  
   
         // 会写数据给客户端  
-        String str = "Hi I am Server ...";  
+        String str = "Hi I am Part02Server ...";
         SmartCarProtocol response = new SmartCarProtocol(str.getBytes().length,  
                 str.getBytes());  
         // 当服务端完成写操作后，关闭与客户端的连接  

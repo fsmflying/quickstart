@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 //import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+@SuppressWarnings("all")
 public class NetTcpSocketClient {
     public static void main(String args[]) {
         startupClient();
@@ -34,8 +34,6 @@ public class NetTcpSocketClient {
             writer.close();
             reader.close();
             socket.close();
-
-
         } catch (UnknownHostException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -43,7 +41,5 @@ public class NetTcpSocketClient {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
     }
 }

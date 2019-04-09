@@ -142,6 +142,7 @@ public class IndexFiles {
     /**
      * Indexes the given file using the given writer, or if a directory is given,
      * recurses over files and directories found under the given directory.
+     * 使用给定的Writer去索引给定的文件，或者给定一个目录，递归遍历其下的文件和目录
      * <p>
      * NOTE: This method indexes one document per input file.  This is slow.  For good
      * throughput, put multiple documents into your input file(s).  An example of this is
@@ -196,12 +197,17 @@ public class IndexFiles {
             // year/month/day/hour/minutes/seconds, down the resolution you require.
             // For example the long value 2011021714 would mean
             // February 17, 2011, 2-3 PM.
+            // 添加文件的最后修改时间到"modified"字段，使用LongPoint类型去创建索引(即使用PointRangeQuery有效过滤)
+            // 这个索引可以到毫秒级精度，这通常已经足够好了，你也可以创建一个基于"年月日时分秒"的数字类型，向下到你需要的精度
+            // 例如，长整数值2011021714代表2011年2月17日下午2到3点
             doc.add(new LongPoint("modified", lastModified));
 
             // Add the contents of the file to a field named "contents".  Specify a Reader,
             // so that the text of the file is tokenized and indexed, but not stored.
             // Note that FileReader expects the file to be in UTF-8 encoding.
             // If that's not the case searching for special characters will fail.
+            // 添加文件的内容到一个名为"contents"文本字段，指定一个读取器，方便文件中包含的文本被分词，并创建索引，但是不需要存储
+            // 注意：文件读取器期望utf8编码格式的文件，如果不是这种情况，搜索特殊字符将会失败
             doc.add(new TextField("contents", new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))));
 
             if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {

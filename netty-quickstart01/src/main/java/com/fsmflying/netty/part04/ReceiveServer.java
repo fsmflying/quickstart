@@ -53,7 +53,7 @@ public final class ReceiveServer {
 
 			// Start the server.
 			ChannelFuture f = b.bind(PORT).sync();
-			System.out.println("Server started ! wait message from client .");
+			System.out.println("Part02Server started ! wait message from client .");
 
 			// Wait until the server socket is closed.
 			f.channel().closeFuture().sync();

@@ -11,7 +11,7 @@ public class NetUdpSocketClient {
         System.out.println("**NetUdpSocketClient:");
         try {
             DatagramSocket socket = new DatagramSocket();
-            String message = "Hello Server! I'm from A";
+            String message = "Hello Part02Server! I'm from A";
             DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), InetAddress.getByName("localhost"), 8000);
             socket.send(packet);
 

@@ -6,7 +6,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.Selector;
 
-import org.junit.Test;
 
 public class Startup {
     public static void main(String[] args) throws IOException {
@@ -41,7 +40,6 @@ public class Startup {
      *
      * @throws IOException
      */
-    @Test
     public void test_00() throws IOException {
         //mode must be one of "r", "rw", "rws", or "rwd"
         RandomAccessFile aFile = new RandomAccessFile("d:\\private\\csdn.10.txt", "r");
@@ -81,12 +79,10 @@ public class Startup {
 
     }
 
-    @Test
     public void test_03_ScatterAndGatter() {
 
     }
 
-    @Test
     public void test_04_Selector() throws IOException {
         Selector selector = Selector.open();
 

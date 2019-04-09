@@ -1,19 +1,15 @@
 package com.fsmflying.common;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 
 public class AppTest {
-    @Test
     public void test_01_char() throws IOException {
-        // ;
         FileInputStream fis01 = new FileInputStream("d:\\private\\csdn.10000.txt");
         Reader reader01 = new InputStreamReader(fis01);
         long length = 1024, readIndex = 50;
@@ -47,9 +43,7 @@ public class AppTest {
 
     }
 
-    @Test
     public void test_02_readToEnd() throws IOException {
-        // ;
         FileInputStream fis01 = new FileInputStream("d:\\private\\csdn.10.txt");
         Reader reader01 = new InputStreamReader(fis01);
 

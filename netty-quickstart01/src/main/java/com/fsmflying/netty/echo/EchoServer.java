@@ -34,6 +34,7 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
 /**
  * Echoes back any received data from a client.
  */
+@SuppressWarnings("all")
 public final class EchoServer {
 
 	static final boolean SSL = System.getProperty("ssl") != null;

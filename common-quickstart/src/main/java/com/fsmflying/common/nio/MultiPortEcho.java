@@ -1,10 +1,10 @@
 package com.fsmflying.common.nio;
 
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -12,12 +12,8 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class MultiPortEcho {
 
-    Logger logger = LoggerFactory.getLogger(MultiPortEcho.class);
     private int ports[];
     private ByteBuffer echoBuffer = ByteBuffer.allocate(1024);
 
@@ -58,12 +54,10 @@ public class MultiPortEcho {
             SelectionKey key = ssc.register(selector, SelectionKey.OP_ACCEPT);
 
             // System.out.println("Going to listen on " + ports[i]);
-            logger.info("Going to listen on " + ports[i]);
         }
 
         while (true) {// 10
             int num = selector.select();
-            logger.info("selector.select():" + num);
 
             Set<SelectionKey> selectedKeys = selector.selectedKeys();
 
@@ -72,8 +66,6 @@ public class MultiPortEcho {
             while (it.hasNext()) {// 11
                 SelectionKey key = (SelectionKey) it.next();
                 if ((key.readyOps() & SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT) {// 12
-                    logger.info("-----------------------------------------------------------------------");
-                    logger.info("[server]:OP_ACCEPT");
                     // Accept the new connection
                     ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
                     SocketChannel sc = ssc.accept();
@@ -90,11 +82,8 @@ public class MultiPortEcho {
                     // ssc.close();
 
                     // System.out.println("Got connection from " + sc);
-                    logger.info("Got connection from " + sc);
                 } else if ((key.readyOps() & SelectionKey.OP_READ) == SelectionKey.OP_READ) {// 12
-                    logger.info("-----------------------------------------------------------------------");
                     // System.out.println("[server]:OP_READ");
-                    logger.info("[server]:OP_READ");
                     // Read the data
                     SocketChannel sc = (SocketChannel) key.channel();
                     sc.configureBlocking(false);
@@ -118,13 +107,11 @@ public class MultiPortEcho {
                         // logger.info("[receive data]:" + new String(bytes));
                         // echoBuffer.reset();
 
-                        logger.info(echoBuffer.toString());
                         sc.write(echoBuffer);// 把发送过来的数据再发送回去
                         bytesEchoed += r;
                     } // 13
                     // sc.finishConnect();
                     // sc.close();
-                    logger.info("Echoed " + bytesEchoed + " from " + sc);
                 } // 12
 
                 // it.remove();
@@ -137,10 +124,8 @@ public class MultiPortEcho {
             } // 11
 
             // System.out.println("going to clear");
-            logger.info("going to clear");
             // selectedKeys.clear();
             // System.out.println("cleared");
-            logger.info("cleared");
         } // 10
     }
 }

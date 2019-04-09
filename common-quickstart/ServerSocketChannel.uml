@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.nio.channels.ServerSocketChannel</OriginalElement>
+  <nodes>
+    <node x="0.0" y="255.0">java.nio.channels.InterruptibleChannel</node>
+    <node x="140.95" y="425.0">java.nio.channels.SelectableChannel</node>
+    <node x="194.87500000000003" y="85.0">java.io.Closeable</node>
+    <node x="321.0" y="255.0">java.nio.channels.NetworkChannel</node>
+    <node x="27.000000000000057" y="340.0">java.nio.channels.spi.AbstractInterruptibleChannel</node>
+    <node x="176.87500000000003" y="0.0">java.lang.AutoCloseable</node>
+    <node x="109.94999999999996" y="510.0">java.nio.channels.spi.AbstractSelectableChannel</node>
+    <node x="205.575" y="595.0">java.nio.channels.ServerSocketChannel</node>
+    <node x="201.37500000000003" y="170.0">java.nio.channels.Channel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.nio.channels.SelectableChannel" target="java.nio.channels.spi.AbstractInterruptibleChannel">
+      <point x="-48.74999999999997" y="-17.5" />
+      <point x="189.70000000000002" y="400.0" />
+      <point x="163.50000000000006" y="400.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.NetworkChannel" target="java.nio.channels.Channel">
+      <point x="0.0" y="-17.5" />
+      <point x="412.0" y="225.0" />
+      <point x="305.5" y="225.0" />
+      <point x="44.625" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.spi.AbstractInterruptibleChannel" target="java.nio.channels.InterruptibleChannel">
+      <point x="-68.25" y="-17.5" />
+      <point x="95.25000000000006" y="315.0" />
+      <point x="105.5" y="315.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.ServerSocketChannel" target="java.nio.channels.spi.AbstractSelectableChannel">
+      <point x="-54.0" y="-17.5" />
+      <point x="259.575" y="570.0" />
+      <point x="238.44999999999996" y="570.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.spi.AbstractInterruptibleChannel" target="java.nio.channels.Channel">
+      <point x="68.25" y="-17.5" />
+      <point x="231.75000000000006" y="315.0" />
+      <point x="221.50000000000003" y="315.0" />
+      <point x="221.50000000000003" y="235.0" />
+      <point x="246.00000000000003" y="235.0" />
+      <point x="-14.875" y="17.5" />
+    </edge>
+    <edge source="java.io.Closeable" target="java.lang.AutoCloseable">
+      <point x="0.0" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.Channel" target="java.io.Closeable">
+      <point x="0.0" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.ServerSocketChannel" target="java.nio.channels.NetworkChannel">
+      <point x="54.0" y="-17.5" />
+      <point x="367.575" y="570.0" />
+      <point x="412.0" y="570.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.spi.AbstractSelectableChannel" target="java.nio.channels.SelectableChannel">
+      <point x="2.8421709430404007E-14" y="-17.5" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.InterruptibleChannel" target="java.nio.channels.Channel">
+      <point x="0.0" y="-17.5" />
+      <point x="105.5" y="235.0" />
+      <point x="216.25000000000003" y="235.0" />
+      <point x="-44.625" y="17.5" />
+    </edge>
+    <edge source="java.nio.channels.SelectableChannel" target="java.nio.channels.Channel">
+      <point x="48.75000000000003" y="-17.5" />
+      <point x="287.20000000000005" y="400.0" />
+      <point x="310.5" y="400.0" />
+      <point x="310.5" y="235.0" />
+      <point x="275.75" y="235.0" />
+      <point x="14.875" y="17.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="251.5" y="315.0" />
+  <SelectedNodes>
+    <node>java.nio.channels.ServerSocketChannel</node>
+    <node>java.nio.channels.Channel</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

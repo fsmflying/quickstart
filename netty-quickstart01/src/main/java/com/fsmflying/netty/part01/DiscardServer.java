@@ -2,10 +2,7 @@ package com.fsmflying.netty.part01;
 
 import io.netty.bootstrap.ServerBootstrap;
 
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -28,6 +25,12 @@ public class DiscardServer {
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
 			ServerBootstrap b = new ServerBootstrap(); // (2)
+//			b.channelFactory(new ChannelFactory<ServerChannel>() {
+//				@Override
+//				public ServerChannel newChannel() {
+//					return null;
+//				}
+//			});
 			b.group(bossGroup, workerGroup)//
 					.channel(NioServerSocketChannel.class) // (3)
 					.childHandler(new ChannelInitializer<SocketChannel>() { // (4)

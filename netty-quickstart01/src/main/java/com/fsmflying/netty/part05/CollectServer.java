@@ -27,8 +27,8 @@ public class CollectServer {
 	static BufferedOutputStream out;
 
 	public static void main(String[] args) {
-		System.out.println("Server started ! wait for client messages !");
-		logger.debug("Server started ! wait for client messages !");
+		System.out.println("Part02Server started ! wait for client messages !");
+		logger.debug("Part02Server started ! wait for client messages !");
 		// System.out.println("PORT:" + PORT);
 		EventLoopGroup boss = new NioEventLoopGroup(1);
 		EventLoopGroup worker = new NioEventLoopGroup();
