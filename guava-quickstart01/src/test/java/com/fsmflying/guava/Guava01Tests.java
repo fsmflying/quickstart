@@ -36,7 +36,7 @@ public class Guava01Tests {
 	public void test_01() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("d:\\private\\data.100.2.txt"));
 		Map<String, String> userMap = new HashMap<String, String>();
-		String line = null;
+		String line;
 		while ((line = reader.readLine()) != null) {
 			userMap.put(line.split(" ")[0], line.split(" ")[2]);
 		}
@@ -55,6 +55,8 @@ public class Guava01Tests {
 		System.out.println("c.isPresent():" + c.isPresent());
 		System.out.println("c.get():" + (c.isPresent() ? c.get() : null));
 		System.out.println("c.or(99):" + c.or(99));
+		System.out.println(a.asSet());
+
 	}
 
 	@Test
