@@ -78,7 +78,6 @@
     </dependencyManagement>
     <modules>
         <module>bootstrap-quickstart01</module>
-        <module>common-quickstart</module>
         <module>database-quickstart01</module>
         <module>guava-quickstart01</module>
         <module>hadoop-quickstart01</module>
